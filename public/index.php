@@ -1,15 +1,12 @@
 <?php
 
-require '../config/config.php';         // Инициализация настроек
-require '../library/mainFunctions.php'; // Основные функции
+include_once '../config/config.php';        // Инициализация настроек
+include_once '../library/mainFunctions.php'; // Основные функции
 
-// Определение Controller
-$controller = isset($_GET['controllers']) ? ucfirst($_GET['controllers']) : 'Index';
+// определяем с каким контроллером будем работать
+$controllerName = isset($_GET['controller']) ? ucfirst($_GET['controller']) : 'Index';
 
-// Определение Action
-$action = $_GET['action'] ?? 'index';
+// определяем с какой функцией будем работать
+$actionName = isset($_GET['action']) ? $_GET['action'] : 'index';
 
-echo 'Подключаемый php файл (Controller): ' . $controller . '<br>';
-echo 'Подключаемый php файл (Action): ' . $action . '<br>';
-
-loadPage($controller, $action);
+loadPage($smarty, $controllerName, $actionName);
