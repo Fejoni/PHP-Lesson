@@ -31,6 +31,17 @@ function loadTemplate($smarty, $templateName)
     $smarty->display($templateName . TemplatePostfix);
 }
 
+function createSmartyRsArray($rs)
+{
+    if (!$rs) return false;
+
+    $smartyRs = array();
+    while ($row = $rs->fetch_assoc()){
+        $smartyRs[] = $row;
+    }
+    return $smartyRs;
+}
+
 // Дебагер
 
 function debug($data = null, $die = 1)
